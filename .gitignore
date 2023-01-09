@@ -1,2 +1,11 @@
-# Project exclude paths
+# Default ignored files
 /out/
+/shelf/
+/.idea/workspace.xml
+/.idea
+cucumber-report
+/target
+build
+tmp
+allure-results
+.allure
