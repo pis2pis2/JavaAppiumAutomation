@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1621cba4-0aba-45a6-b043-1d09ca7c29ab" name="Changes" comment="Third test">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/java_client_4_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/selenium_server_standalone_3_4_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+    <list default="true" id="1621cba4-0aba-45a6-b043-1d09ca7c29ab" name="Changes" comment="Ex1: Конфигурация инструментов">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaAppiumAutomation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JavaAppiumAutomation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FirstTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FirstTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +37,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/selenium-server-standalone-3.4.0.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -52,7 +48,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FirstTest">
+  <component name="RunManager" selected="JUnit.FirstTest.testCheckInputText">
     <configuration name="FirstTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
@@ -72,31 +68,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainClassTest.testGetClassNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FirstTest.testCancelSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MainClassTest" />
-      <option name="METHOD_NAME" value="testGetClassNumber" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="testCancelSearch" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainClassTest.testGetClassString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FirstTest.testCheckInputText" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MainClassTest" />
-      <option name="METHOD_NAME" value="testGetClassString" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="testCheckInputText" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainClassTest.testGetLocalNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FirstTest.testCompareArticleTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MainClassTest" />
-      <option name="METHOD_NAME" value="testGetLocalNumber" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="testCompareArticleTitle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -104,11 +100,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FirstTest" />
-        <item itemvalue="JUnit.MainClassTest.testGetLocalNumber" />
+        <item itemvalue="JUnit.FirstTest.testCheckInputText" />
+        <item itemvalue="JUnit.FirstTest.testCancelSearch" />
+        <item itemvalue="JUnit.FirstTest.testCompareArticleTitle" />
         <item itemvalue="JUnit.FirstTest.firstTest" />
-        <item itemvalue="JUnit.MainClassTest.testGetClassString" />
-        <item itemvalue="JUnit.MainClassTest.testGetClassNumber" />
+        <item itemvalue="JUnit.FirstTest" />
       </list>
     </recent_temporary>
   </component>
@@ -152,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672829610108</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Ex1: Конфигурация инструментов">
+      <created>1673247436145</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673247436145</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,6 +174,7 @@
     <MESSAGE value="First test" />
     <MESSAGE value="Second test" />
     <MESSAGE value="Third test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Third test" />
+    <MESSAGE value="Ex1: Конфигурация инструментов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ex1: Конфигурация инструментов" />
   </component>
 </project>
