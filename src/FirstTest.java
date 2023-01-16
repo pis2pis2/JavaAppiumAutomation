@@ -81,6 +81,16 @@ public class FirstTest {
 
     }
 
+    @Test
+    public void testCancelSearchAnyArticles() {
+        waitForElementAndClick(By.id("org.wikipedia:id/search_container"), "Cannot find input line", 5);
+        waitForElementAndSendCase(By.id("org.wikipedia:id/search_plate"), "Java", "Cannot find input line two", 5);
+        waitForElementPresent(By.id("org.wikipedia:id/search_results_list"), "Cannot find result of search");
+        waitForElementAndClick(By.id("org.wikipedia:id/search_close_btn"), "Cannot find close button", 5);
+        waitForElementNotPresent(By.id("org.wikipedia:id/search_results_list"), "Result of search is present", 5);
+
+    }
+
 
     private WebElement waitForElementPresent(By by, String errorMessage, long timeoutInSeconds){
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
