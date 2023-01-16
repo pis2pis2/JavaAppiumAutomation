@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 import java.net.URL;
+import java.util.List;
 
 public class FirstTest {
     private AppiumDriver driver;
@@ -91,11 +92,25 @@ public class FirstTest {
 
     }
 
+    @Test
+    public void testCheckWordsInSearch() {
+        waitForElementAndClick(By.id("org.wikipedia:id/search_container"), "Cannot find input line", 5);
+        waitForElementAndSendCase(By.id("org.wikipedia:id/search_plate"), "Java", "Cannot find input line two", 5);
+        waitForElementsPresent((By.id("org.wikipedia:id/page_list_item_title")), "Cannot find results of search", 5);
+        assertElementsContainsText((By.id("org.wikipedia:id/page_list_item_title")), "Header of element is not contains expected text", "Java");
+    }
+
 
     private WebElement waitForElementPresent(By by, String errorMessage, long timeoutInSeconds){
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.withMessage(errorMessage + "\n");
         return wait.until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
+    private List<WebElement> waitForElementsPresent(By by, String errorMessage, long timeoutInSeconds){
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        wait.withMessage(errorMessage + "\n");
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
     }
 
     private WebElement waitForElementPresent(By by, String errorMessage){
@@ -129,6 +144,17 @@ public class FirstTest {
 
     private void assertElementHasText(By by, String errorMessage, String expectedMessage){
         Assert.assertEquals(errorMessage, expectedMessage, driver.findElement(by).getText());
+
+    }
+
+    private void assertElementsContainsText(By by, String errorMessage, String expectedMessage){
+        int numberElementsOfSearchResult = waitForElementsPresent(by, "Cannot get numbers of element search result", 5).size();
+        for (int i = 0; i < numberElementsOfSearchResult; i++) {
+            WebElement element = waitForElementsPresent(by, "Cannot find results of search", 5).get(i);
+            String actualMessage = element.getText();
+            Assert.assertTrue(errorMessage, actualMessage.contains(expectedMessage));
+            System.out.println(actualMessage);
+        }
 
     }
 
