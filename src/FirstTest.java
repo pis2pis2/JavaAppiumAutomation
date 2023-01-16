@@ -71,6 +71,17 @@ public class FirstTest {
                 "Object-oriented programming language", articleHeader);
     }
 
+    @Test
+    public void testCheckInputText() {
+        waitForElementPresent(By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
+                "Элемент 'Search Wikipedia' не найден");
+        assertElementHasText(By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
+                "Ожидаемый текст placeholder строки поиска не совпал с фактическим",
+                "Search Wikipedia");
+
+    }
+
+
     private WebElement waitForElementPresent(By by, String errorMessage, long timeoutInSeconds){
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.withMessage(errorMessage + "\n");
@@ -105,4 +116,10 @@ public class FirstTest {
         element.clear();
         return element;
     }
+
+    private void assertElementHasText(By by, String errorMessage, String expectedMessage){
+        Assert.assertEquals(errorMessage, expectedMessage, driver.findElement(by).getText());
+
+    }
+
 }
