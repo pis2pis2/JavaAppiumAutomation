@@ -160,6 +160,40 @@ public class FirstTest {
 
     }
 
+    @Test
+    public void testSaveTwoArticles() {
+        waitForElementAndClick(By.xpath("//*[contains(@text, 'Search Wikipedia')]"), "Cannot find text",
+                5);
+        waitForElementAndSendCase(By.xpath("//*[contains(@text, 'Search Wikipedia')]"), "Java",
+                "Cannot find text 'Java'", 5);
+        waitForElementAndClick(By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_description'" +
+                " and @text = 'Object-oriented programming language']"), "Cannot find text 'Object-oriented programming language'", 5);
+        waitForElementPresent(By.id("pcs-edit-section-title-description"),
+                "Cannot find title of element");
+        waitForElementAndClick(By.id("org.wikipedia:id/page_save"), "Cannot find saveButton", 5);
+        clickBack();
+        waitForElementAndClick(By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_description'" +
+                " and @text = 'Island in Indonesia']"), "Cannot find text 'Island in Indonesia'", 5);
+        waitForElementPresent(By.id("pcs-edit-section-title-description"),
+                "Cannot find title of element");
+        waitForElementAndClick(By.id("org.wikipedia:id/page_save"), "Cannot find saveButton", 5);
+        waitForElementAndClick(By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"), "Cannot find navigate up button", 5);
+        waitForElementAndClick(By.id("org.wikipedia:id/search_close_btn"), "Cannot find close button", 5);
+        clickBack();
+        clickBack();
+        waitForElementAndClick(By.xpath("//android.widget.FrameLayout[@content-desc='Saved']/android.widget.FrameLayout/android.widget.ImageView"), "Cannot find saved button", 5);
+        waitForElementAndClick(By.xpath("//*[@text = 'Default list for your saved articles']"), "Cannot find text 'Default list for your saved articles'", 5);
+        waitForElementPresent(By.xpath("//*[@text = 'Object-oriented programming language']"),
+                "Cannot find text 'Object-oriented programming language'");
+        waitForElementPresent(By.xpath("//*[@text = 'Island in Indonesia']"), "Cannot find saved article", 10);
+        swipeElementToLeft(By.xpath("//*[@text = 'Object-oriented programming language']"), "Cannot find saved article");
+        waitForElementNotPresent(By.xpath("//*[@text = 'Object-oriented programming language']"), "Cannot delete saved article", 10);
+        waitForElementAndClick(By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_description'" +
+                " and @text = 'Island in Indonesia']"), "Cannot find text 'Island in Indonesia'", 5);
+        String titleOfSecondArticle = waitForElementAndGetAttribute(By.id("pcs-edit-section-title-description"), "text", "titleOfSecondArticle is not present in second article", 10);
+        Assert.assertEquals("Ожидаемый и фактический заголовок 2-ой статьи не совпадают", "Island in Indonesia", titleOfSecondArticle);
+    }
+
 
 
     private WebElement waitForElementPresent(By by, String errorMessage, long timeoutInSeconds){
