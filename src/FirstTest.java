@@ -12,10 +12,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-
 import java.net.URL;
 import java.util.List;
+
 
 public class FirstTest {
     private AppiumDriver driver;
@@ -194,6 +193,19 @@ public class FirstTest {
         Assert.assertEquals("Ожидаемый и фактический заголовок 2-ой статьи не совпадают", "Island in Indonesia", titleOfSecondArticle);
     }
 
+    @Test
+    public void testAssertTitle() {
+        waitForElementAndClick(By.xpath("//*[contains(@text, 'Search Wikipedia')]"), "Cannot find text",
+                5);
+        waitForElementAndSendCase(By.xpath("//*[contains(@text, 'Search Wikipedia')]"), "Java",
+                "Cannot find text 'Java'", 5);
+        waitForElementAndClick(By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_description'" +
+                " and @text = 'Object-oriented programming language']"), "Cannot find text 'Object-oriented programming language'", 5);
+        assertElementPresent(By.id("pcs-edit-section-title-description"), "Фактический заголовок элемента не совпал с ожидаемым заголовком");
+
+
+    }
+
 
 
     private WebElement waitForElementPresent(By by, String errorMessage, long timeoutInSeconds){
@@ -240,6 +252,11 @@ public class FirstTest {
     private void assertElementHasText(By by, String errorMessage, String expectedMessage){
         Assert.assertEquals(errorMessage, expectedMessage, driver.findElement(by).getText());
 
+    }
+
+    private void assertElementPresent(By by, String errorMessage){
+        Boolean element = driver.findElement(by).isDisplayed();
+        Assert.assertTrue(errorMessage, element);
     }
 
     private void assertElementsContainsText(By by, String errorMessage, String expectedMessage){
