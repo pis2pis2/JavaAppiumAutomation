@@ -18,7 +18,6 @@ import java.util.List;
 
 public class FirstTest {
     private AppiumDriver driver;
-    private ScreenOrientation orientationBeforeTest;
 
     @Before
     public void setUp() throws Exception {
@@ -31,16 +30,14 @@ public class FirstTest {
         capabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
         capabilities.setCapability("noReset", true);
         capabilities.setCapability("app", "C:\\Users\\Pavel_Stepanov\\Desktop\\JavaAppiumAutomation\\apks\\org.wikipedia.apk");
+        capabilities.setCapability("orientation", "PORTRAIT");
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
-       orientationBeforeTest = driver.getOrientation();
     }
 
     @After
     public void tearDown() {
-
-        driver.rotate(orientationBeforeTest);
         driver.quit();
     }
 
