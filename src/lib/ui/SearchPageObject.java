@@ -9,7 +9,9 @@ public class SearchPageObject extends MainPageObject{
             searchInitElement = "//*[contains(@text, 'Search Wikipedia')]",
             searchInput = "//*[contains(@text, 'Search Wikipedia')]",
             searchCancelButton = "org.wikipedia:id/search_close_btn",
-            searchResultBySubstringTpl = "//*[@resource-id='org.wikipedia:id/page_list_item_description' and @text = '{SUBSTRING}']";
+            searchResultBySubstringTpl = "//*[@resource-id='org.wikipedia:id/page_list_item_description' and @text = '{SUBSTRING}']",
+            searchResultByTitleAndDescriptionWithSubstringsTpl = "//*[(@resource-id='org.wikipedia:id/page_list_item_title'" +
+                    " and @text = '{TITLE}')]/..//*[(@resource-id='org.wikipedia:id/page_list_item_description' and @text = '{DESCRIPTION}')]";
 
     public SearchPageObject(AppiumDriver driver){
         super(driver);
@@ -17,6 +19,10 @@ public class SearchPageObject extends MainPageObject{
     /* TEMPLATES METHODS */
     private static String getResultSearchElement(String substring){
         return searchResultBySubstringTpl.replace("{SUBSTRING}", substring);
+    }
+
+    private static String getResultSearchElementByTitleAndDescription(String title, String description){
+        return searchResultByTitleAndDescriptionWithSubstringsTpl.replace("{TITLE}", title).replace("{DESCRIPTION}", description);
     }
     /* TEMPLATES METHODS */
     public void initSearchInput(){
@@ -53,6 +59,11 @@ public class SearchPageObject extends MainPageObject{
     public void clickByArticleWithSubstring(String substring){
         String searchResultXpath = getResultSearchElement(substring);
         this.waitForElementAndClick(By.xpath(searchResultXpath), "Cannot find and click searchResult with substring " + substring, 10);
+    }
+
+    public void waitForElementByTitleAndDescription(String title, String description){
+        String searchResultXpath = getResultSearchElementByTitleAndDescription(title, description);
+        this.waitForElementPresent(By.xpath(searchResultXpath), "Cannot find searchResult with title " + title + " and description " + description);
     }
 
 }

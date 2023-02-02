@@ -33,4 +33,14 @@ public class SearchTests extends CoreTestCase {
         searchPageObject.clickCancelButton();
         searchPageObject.waitForSearchResultToDisappear("Object-oriented programming language");
     }
+
+    @Test
+    public void testSearchResultsByTitleAndDescription() {
+        SearchPageObject searchPageObject = new SearchPageObject(driver);
+        searchPageObject.initSearchInput();
+        searchPageObject.typeSearchLine("Java");
+        searchPageObject.waitForElementByTitleAndDescription("Java", "Island in Indonesia");
+        searchPageObject.waitForElementByTitleAndDescription("Java (programming language)", "Object-oriented programming language");
+        searchPageObject.waitForElementByTitleAndDescription("JavaScript", "High-level programming language");
+    }
 }
