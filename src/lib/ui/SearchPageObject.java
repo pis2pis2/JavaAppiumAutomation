@@ -40,9 +40,14 @@ public class SearchPageObject extends MainPageObject{
         this.waitForElementAndSendCase(By.xpath(searchInput), searchLine, "Cannot find searchLineElement", 5);
     }
 
-    public void waitForSearchResult(String substring){
+    public void waitForSearchResultToAppear(String substring){
         String searchResultXpath = getResultSearchElement(substring);
         this.waitForElementPresent(By.xpath(searchResultXpath), "Cannot find searchResult with substring " + substring);
+    }
+
+    public void waitForSearchResultToDisappear(String substring){
+        String searchResultXpath = getResultSearchElement(substring);
+        this.waitForElementNotPresent((By.xpath(searchResultXpath)), "SearchResult with substring " + substring + " is present", 15);
     }
 
     public void clickByArticleWithSubstring(String substring){

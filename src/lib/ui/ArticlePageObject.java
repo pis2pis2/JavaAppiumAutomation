@@ -35,7 +35,10 @@ public class ArticlePageObject extends MainPageObject {
 
     public void closeArticle(){
         this.waitForElementAndClick(By.xpath(navigateUpButton), "Cannot find navigate up button", 5);
-        this.waitForElementAndClick(By.id(searchCloseButton), "Cannot find close button", 5);
+    }
+
+    public void assertArticleTitlePresent(){
+        this.assertElementPresent(By.id(title), "Заголовок статьи отсутствует, хотя должен присутствовать");
     }
 
 

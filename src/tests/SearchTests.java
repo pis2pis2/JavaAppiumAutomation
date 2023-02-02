@@ -11,7 +11,7 @@ public class SearchTests extends CoreTestCase {
         SearchPageObject searchPageObject = new SearchPageObject(driver);
         searchPageObject.initSearchInput();
         searchPageObject.typeSearchLine("Java");
-        searchPageObject.waitForSearchResult("Object-oriented programming language");
+        searchPageObject.waitForSearchResultToAppear("Object-oriented programming language");
     }
 
     @Test
@@ -22,5 +22,15 @@ public class SearchTests extends CoreTestCase {
         searchPageObject.waitForCancelButtonToAppear();
         searchPageObject.clickCancelButton();
         searchPageObject.waitForCancelButtonToDisappear();
+    }
+
+    @Test
+    public void testCancelSearchAnyArticles() {
+        SearchPageObject searchPageObject = new SearchPageObject(driver);
+        searchPageObject.initSearchInput();
+        searchPageObject.typeSearchLine("Java");
+        searchPageObject.waitForSearchResultToAppear("Object-oriented programming language");
+        searchPageObject.clickCancelButton();
+        searchPageObject.waitForSearchResultToDisappear("Object-oriented programming language");
     }
 }
