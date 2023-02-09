@@ -1,7 +1,6 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class ArticlePageObject extends MainPageObject {
@@ -11,14 +10,14 @@ public class ArticlePageObject extends MainPageObject {
     }
 
     private static final String
-    title = "pcs-edit-section-title-description",
-    pageSave = "org.wikipedia:id/page_save",
-    navigateUpButton = "//android.widget.ImageButton[@content-desc='Navigate up']",
-    searchCloseButton = "org.wikipedia:id/search_close_btn",
-    footerElement = "//*[@resource-id='pcs-footer-container-readmore-heading'][@text='READ MORE']";
+    title = "id:pcs-edit-section-title-description",
+    pageSave = "id:org.wikipedia:id/page_save",
+    navigateUpButton = "xpath://android.widget.ImageButton[@content-desc='Navigate up']",
+    searchCloseButton = "id:org.wikipedia:id/search_close_btn",
+    footerElement = "xpath://*[@resource-id='pcs-footer-container-readmore-heading'][@text='READ MORE']";
 
     public WebElement waitForTitleElement(){
-        return this.waitForElementPresent(By.id(title), "Cannot find title article on page", 15);
+        return this.waitForElementPresent(title, "Cannot find title article on page", 15);
     }
 
     public String getArticleTitle(){
@@ -26,19 +25,19 @@ public class ArticlePageObject extends MainPageObject {
     }
 
     public void swipeToFooter(){
-        this.swipeUpToFindElement(By.xpath(footerElement), "Cannot find the of article", 20);
+        this.swipeUpToFindElement(footerElement, "Cannot find the of article", 20);
     }
 
     public void addArticleToDefaultList(){
-        this.waitForElementAndClick(By.id(pageSave), "Cannot find saveButton", 5);
+        this.waitForElementAndClick(pageSave, "Cannot find saveButton", 5);
     }
 
     public void closeArticle(){
-        this.waitForElementAndClick(By.xpath(navigateUpButton), "Cannot find navigate up button", 5);
+        this.waitForElementAndClick(navigateUpButton, "Cannot find navigate up button", 5);
     }
 
     public void assertArticleTitlePresent(){
-        this.assertElementPresent(By.id(title), "Заголовок статьи отсутствует, хотя должен присутствовать");
+        this.assertElementPresent(title, "Заголовок статьи отсутствует, хотя должен присутствовать");
     }
 
 

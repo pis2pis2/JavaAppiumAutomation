@@ -7,6 +7,7 @@ import lib.ui.NavigationUi;
 import lib.ui.SearchPageObject;
 import org.junit.Test;
 
+
 public class MyListTests extends CoreTestCase {
     @Test
     public void testSaveFirstArticleToMyList() {

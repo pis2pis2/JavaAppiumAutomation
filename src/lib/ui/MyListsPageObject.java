@@ -16,24 +16,24 @@ public class MyListsPageObject extends MainPageObject{
     }
 
     private static final String
-            nameFolderTpl = "//*[@resource-id='org.wikipedia:id/item_title' and @text='{nameFolder}']",
-            articleByTitleTpl = "//*[@text = '{title}']";
+            nameFolderTpl = "xpath://*[@resource-id='org.wikipedia:id/item_title' and @text='{nameFolder}']",
+            articleByTitleTpl = "xpath://*[@text = '{title}']";
 
     public void openFolderByName(String nameFolder){
-        this.waitForElementAndClick(By.xpath(getFolderXpathByName(nameFolder)), "Cannot find folder by name " + nameFolder, 5);
+        this.waitForElementAndClick(getFolderXpathByName(nameFolder), "Cannot find folder by name " + nameFolder, 5);
     }
 
     public void swipeArticleTitleToDelete(String articleTitle){
         this.waitForArticleToAppearByTitle(articleTitle);
-        this.swipeElementToLeft(By.xpath(getSavedArticleXpathByTitle(articleTitle)), "Cannot find saved article by title " + articleTitle);
+        this.swipeElementToLeft(getSavedArticleXpathByTitle(articleTitle), "Cannot find saved article by title " + articleTitle);
         this.waitForArticleToDisappearByTitle(articleTitle);
     }
 
     public void waitForArticleToDisappearByTitle(String articleTitle){
-        this.waitForElementNotPresent(By.xpath(getSavedArticleXpathByTitle(articleTitle)), "Cannot delete saved article by title " + articleTitle, 10);
+        this.waitForElementNotPresent(getSavedArticleXpathByTitle(articleTitle), "Cannot delete saved article by title " + articleTitle, 10);
     }
 
     public void waitForArticleToAppearByTitle(String articleTitle){
-        this.waitForElementPresent(By.xpath(getSavedArticleXpathByTitle(articleTitle)), "Cannot find saved article by title " + articleTitle, 10);
+        this.waitForElementPresent(getSavedArticleXpathByTitle(articleTitle), "Cannot find saved article by title " + articleTitle, 10);
     }
 }
