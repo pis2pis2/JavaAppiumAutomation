@@ -1,12 +1,15 @@
-package tests.IOS;
+package tests;
 
-import io.appium.java_client.AppiumDriver;
-import lib.iOSTestCase;
+import lib.CoreTestCase;
+import lib.Platform;
 import lib.ui.WelcomePageObject;
 
-public class GetStartedTest extends iOSTestCase {
+public class GetStartedTest extends CoreTestCase {
 
     public void testPassThroughWelcome(){
+        if(Platform.getInstance().isAndroid()) {
+            return;
+        }
         WelcomePageObject welcomePageObject = new WelcomePageObject(driver);
         welcomePageObject.waitForLearnMoreLink();
         welcomePageObject.clickNextButton();

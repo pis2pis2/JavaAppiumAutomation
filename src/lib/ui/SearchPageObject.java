@@ -1,17 +1,16 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
 
-public class SearchPageObject extends MainPageObject{
+abstract public class SearchPageObject extends MainPageObject{
 
-    private static final String
-            searchInitElement = "xpath://*[contains(@text, 'Search Wikipedia')]",
-            searchInput = "xpath://*[contains(@text, 'Search Wikipedia')]",
-            searchCancelButton = "id:org.wikipedia:id/search_close_btn",
-            searchResultBySubstringTpl = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_description' and @text = '{SUBSTRING}']",
-            searchResultByTitleAndDescriptionWithSubstringsTpl = "xpath://*[(@resource-id='org.wikipedia:id/page_list_item_title'" +
-                    " and @text = '{TITLE}')]/..//*[(@resource-id='org.wikipedia:id/page_list_item_description' and @text = '{DESCRIPTION}')]";
+    protected static String
+            searchInitElement,
+            searchInput,
+            searchCancelButton,
+            searchResultBySubstringTpl,
+            searchCancelButtonIos,
+            searchResultByTitleAndDescriptionWithSubstringsTpl;
 
     public SearchPageObject(AppiumDriver driver){
         super(driver);
@@ -40,6 +39,10 @@ public class SearchPageObject extends MainPageObject{
 
     public void clickCancelButton() {
         waitForElementAndClick(searchCancelButton, "Cannot click searchCancelButton", 5);
+    }
+
+    public void clickCancelButtonIos(){
+        waitForElementAndClick(searchCancelButtonIos, "Cannot click searchCancelButton", 5);
     }
 
     public void typeSearchLine(String searchLine){

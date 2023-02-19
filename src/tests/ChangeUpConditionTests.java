@@ -3,13 +3,15 @@ package tests;
 import lib.CoreTestCase;
 import lib.ui.ArticlePageObject;
 import lib.ui.SearchPageObject;
+import lib.ui.factories.ArticlePageObjectFactory;
+import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
 
 public class ChangeUpConditionTests extends CoreTestCase {
     @Test
     public void testChangeScreenOrientationOnSearchResult() {
-        SearchPageObject searchPageObject = new SearchPageObject(driver);
-        ArticlePageObject articlePageObject = new ArticlePageObject(driver);
+        SearchPageObject searchPageObject = SearchPageObjectFactory.get(driver);
+        ArticlePageObject articlePageObject = ArticlePageObjectFactory.get(driver);
         searchPageObject.initSearchInput();
         searchPageObject.typeSearchLine("Java");
         searchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
@@ -21,7 +23,7 @@ public class ChangeUpConditionTests extends CoreTestCase {
 
     @Test
     public void testCheckSearchArticleInBackground(){
-        SearchPageObject searchPageObject = new SearchPageObject(driver);
+        SearchPageObject searchPageObject = SearchPageObjectFactory.get(driver);
         searchPageObject.initSearchInput();
         searchPageObject.typeSearchLine("Java");
         searchPageObject.waitForSearchResultToAppear("Object-oriented programming language");
