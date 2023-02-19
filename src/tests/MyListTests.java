@@ -62,10 +62,15 @@ public class MyListTests extends CoreTestCase {
         System.out.println(articleTitle2);
         articlePageObject.addArticleToDefaultList();
         articlePageObject.closeArticle();
-        this.clickBack();
-        this.clickBack();
-        navigationUi.clickSavedButton();
-        myListsPageObject.openFolderByName("Saved");
+        if(Platform.getInstance().isAndroid()) {
+            this.clickBack();
+            this.clickBack();
+            navigationUi.clickSavedButton();
+            myListsPageObject.openFolderByName("Saved");
+        } else {
+            searchPageObject.clickCancelButtonIos();
+            navigationUi.clickSavedButton();
+        }
         myListsPageObject.swipeArticleTitleToDelete(articleTitle1);
         searchPageObject.clickByArticleWithSubstring("Island in Indonesia");
         articlePageObject.waitForTitleElement();
